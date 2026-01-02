@@ -24,8 +24,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-
-    Component.ConditionalRender({
+  ],
+  afterBody: [Component.ConditionalRender({
       component: Component.Comments({
         provider: "giscus",
         options: {
@@ -43,9 +43,7 @@ export const defaultContentPageLayout: PageLayout = {
         },
       }),
       condition: (page) => page.fileData.slug !== "index",
-    }),
-
-  ],
+    }),],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
