@@ -16,55 +16,55 @@
     <link>https://runyangnotes.top/B_Experiments_Tracking/Global-%E6%80%9D%E6%83%B3</link>
     <guid>https://runyangnotes.top/B_Experiments_Tracking/Global-%E6%80%9D%E6%83%B3</guid>
     <description><![CDATA[ 短期内遮挡严重，用全局信息去做： 取一个长序列，使用一个Transformer中的Encoder对每帧进行编码（显式输入帧号作为位置编码），得到一个Vector 用当前帧的编码与其他帧计算相似度，作为每帧的概率 取Top N相似的帧，对其特征进行融合 动态Conv作为解码器，以当前帧作为模板，生成不同尺寸的卷积核，到聚合的特征中进行卷积操作，最终聚合得到heatmap预测 以上实现存在问题，分析： stage1的特征过于浅层，直接进行融合后，直接用动态卷积计算heatmap网络层过浅 进行改进： stage1 融合之后，输入后续HRNet进行训练（正在训练） 改进二： 为了快速出效果，在sta... ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>Test-time 模型改进</title>
     <link>https://runyangnotes.top/B_Experiments_Tracking/Test-time-%E6%A8%A1%E5%9E%8B%E6%94%B9%E8%BF%9B</link>
     <guid>https://runyangnotes.top/B_Experiments_Tracking/Test-time-%E6%A8%A1%E5%9E%8B%E6%94%B9%E8%BF%9B</guid>
     <description><![CDATA[ 论文 《Test-Time Personalization with a Transformer for Human Pose Estimation》 使用自监督方法，在测试期间可以train一下以适应测试集。 启发与改进： 自监督学习与姿态估计结合，本文用的是姿态到图像的重建任务；可以结合 human parsing 任务到图像重建，观察其特征对姿态估计的作用 使用多个自监督任务与姿态估计结合，看看是否有提升 自监督任务可以由多个 KeyPoints 获 parsing 的body特征转换为最终关键点 本篇论文使用Tranformer来进行自监督的结果到最终结果的转换，可以替换成可形变卷积，... ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>解纠缠特征对齐实验</title>
     <link>https://runyangnotes.top/B_Experiments_Tracking/%E8%A7%A3%E7%BA%A0%E7%BC%A0%E7%89%B9%E5%BE%81%E5%AF%B9%E9%BD%90%E5%AE%9E%E9%AA%8C</link>
     <guid>https://runyangnotes.top/B_Experiments_Tracking/%E8%A7%A3%E7%BA%A0%E7%BC%A0%E7%89%B9%E5%BE%81%E5%AF%B9%E9%BD%90%E5%AE%9E%E9%AA%8C</guid>
     <description><![CDATA[ Hierarchical Motion-Aware Temporal Alignment for Video-Based Human Pose Estimation Motivation: 要证明一下现有的方法直接进行整体图像对齐，可能会趋近于拟合全局图像变化平均值，导致对齐整体力度不够 （效果不明显） 而对于姿态估计来说，邻近帧通常不会整体变化很大(人体躯干)，但是局部关节变化通常很显著，能捕获到局部变化至关重要 我们提出可学习的运动感知的特征对齐，分别处理不同的区域， 分离出motion比较小和比较大的区域，进行分别对齐 传统数字图像处理方法需要手动设置阈值，我们提出一套可学习的方案自动识... ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>Catalog</title>
     <link>https://runyangnotes.top/Catalog</link>
     <guid>https://runyangnotes.top/Catalog</guid>
     <description><![CDATA[  这是我的 Obsidian 知识库，构建于 2024-3-26。 构建原则: 放弃海量标签（确实没啥用） 可以像 book 一样去索引一个东西，目录，这样可以解放复杂分类 尝试重建联系 按这个原则我去尝试一下，至少目前的状态我不喜欢，笔记就是给自己读的，不该这么难受，目录一个个去找，相反和 book 的 index 一样会比较方便。 知识库目录 一、Experimental Tracking 二、Paper Related 三、Research Knowledge 四、Technique Explores 五、Others 六、Summary. ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>Disentangled Representation for Age-Invariant Face Recognition- A Mutual Information Minimization Perspective</title>
     <link>https://runyangnotes.top/D_Paper_Related/Disentangled-Representation-for-Age-Invariant-Face-Recognition--A-Mutual-Information-Minimization-Perspective</link>
     <guid>https://runyangnotes.top/D_Paper_Related/Disentangled-Representation-for-Age-Invariant-Face-Recognition--A-Mutual-Information-Minimization-Perspective</guid>
     <description><![CDATA[  做年龄无关的人脸识别 age-invariant face recognition (AIFR)，需要将人脸表征分解为 identity-dependent &amp; age-dependent components，解纠缠学习这两部分特征，且用互信息来监督学习到的特征；然后只使用身份特征进行人脸识别。 差分建模 We obtain the age-related features through a FC layer from the initial features, and the identity-related features are obtained from the sub... ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>Dynamic Context-Sensitive Filtering Network for Video Salient Object Detection</title>
     <link>https://runyangnotes.top/D_Paper_Related/Dynamic-Context-Sensitive-Filtering-Network-for-Video-Salient-Object-Detection</link>
     <guid>https://runyangnotes.top/D_Paper_Related/Dynamic-Context-Sensitive-Filtering-Network-for-Video-Salient-Object-Detection</guid>
     <description><![CDATA[  动态卷积 GitHub - OIPLab-DUT/DCFNet: Dynamic Context-Sensitive Filtering Network for Video Salient Object Detection 更复杂的卷积核生成方式； DCFM estimates the location-related afﬁnity weights by introducing matrix multiplication into the kernels’ generation process. ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>InternImage- Exploring Large-Scale Vision Foundation Models with Deformable Convolutions</title>
     <link>https://runyangnotes.top/D_Paper_Related/InternImage--Exploring-Large-Scale-Vision-Foundation-Models-with-Deformable-Convolutions</link>
     <guid>https://runyangnotes.top/D_Paper_Related/InternImage--Exploring-Large-Scale-Vision-Foundation-Models-with-Deformable-Convolutions</guid>
     <description><![CDATA[  CNN vs Transformer： long-range dependence adaptive spatial aggregation （transformer QKV都是依赖于输入进行计算的） 分析可形变卷积，Offsets相当于长距离依赖，O、M的计算相当于自适应聚合 DCNV3 具体的卷积操作尚不清楚 分组机制也不清楚 . ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>Learning Continuous Image Representation with Local Implicit Image Function</title>
     <link>https://runyangnotes.top/D_Paper_Related/Learning-Continuous-Image-Representation-with-Local-Implicit-Image-Function</link>
     <guid>https://runyangnotes.top/D_Paper_Related/Learning-Continuous-Image-Representation-with-Local-Implicit-Image-Function</guid>
     <description><![CDATA[ Learning Continuous Image Representation with Local Implicit Image Function 学习连续的图像表征方法，根据图片坐标及周围的特征预测RGB值 因为连续，可以做任意分辨率超分 隐式函数表示本质是用NN学习坐标到相应的信号的映射 The key idea of implicit neural representation is to represent an object as a function that maps coordinates to the corresponding signal (e.g. ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item><item>
     <title>Local Texture Estimator for Implicit Representation Function</title>
     <link>https://runyangnotes.top/D_Paper_Related/Local-Texture-Estimator-for-Implicit-Representation-Function</link>
     <guid>https://runyangnotes.top/D_Paper_Related/Local-Texture-Estimator-for-Implicit-Representation-Function</guid>
     <description><![CDATA[ GitHub - jaewon-lee-b/lte: Local Texture Estimator for Implicit Representation Function, in CVPR 2022 受到Nerf启发，用 Implicit Neural Function 来表征图像，做频率估计 任意分辨率高质量重建 Implicit Representation. ]]></description>
-    <pubDate>Fri, 02 Jan 2026 16:12:05 GMT</pubDate>
+    <pubDate>Fri, 02 Jan 2026 16:21:43 GMT</pubDate>
   </item>
     </channel>
   </rss>
