@@ -1,23 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-const GiscusComments = Component.Comments({
-  provider: "giscus",
-  options: {
-    repo: "FRunyang/runyang-notes",
-    repoId: "R_kgDOQyjTww",
-    category: "Announcements",
-    categoryId: "DIC_kwDOQyjTw84C0ftA",
-    mapping: "pathname",
-    strict: false,
-    reactionsEnabled: true,
-    inputPosition: "bottom",
-    lang: "zh-CN",
-    lightTheme: "light",
-    darkTheme: "dark",
-  },
-})
-
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -41,8 +24,25 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-    Component.ConditionalRender({
-      component: GiscusComments,
+  ],
+  afterBody: [
+     Component.ConditionalRender({
+      component: Component.Comments({
+        provider: "giscus",
+        options: {
+          repo: "FRunyang/runyang-notes",
+          repoId: "R_kgDOQyjTww",
+          category: "Announcements",
+          categoryId: "DIC_kwDOQyjTw84C0ftA",
+          mapping: "pathname",
+          strict: false,
+          reactionsEnabled: true,
+          inputPosition: "bottom",
+          lang: "zh-CN",
+          lightTheme: "light",
+          darkTheme: "dark",
+        },
+      }),
       condition: (page) => page.fileData.slug !== "index",
     }),
   ],
