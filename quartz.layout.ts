@@ -24,13 +24,6 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-    Component.ConditionalRender({
-      component: Component.RecentNotes({
-        limit: 10,
-        showTags: true,
-      }),
-      condition: (page) => page.fileData.slug === "index",
-    }),
   ],
   afterBody: [
       Component.ConditionalRender({
@@ -78,6 +71,13 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        limit: 10,
+        showTags: true,
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
   ],
 }
 
