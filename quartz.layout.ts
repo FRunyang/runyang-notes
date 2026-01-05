@@ -73,7 +73,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Backlinks(),
     Component.ConditionalRender({
       component: Component.RecentNotes({
-        limit: 10,
+        limit: 4,
         showTags: true,
       }),
       condition: (page) => page.fileData.slug === "index",
