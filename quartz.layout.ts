@@ -24,8 +24,23 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        limit: 10,
+        showTags: true,
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
   ],
-  afterBody: [Component.ConditionalRender({
+  afterBody: [
+      Component.ConditionalRender({
+    component: Component.RecentNotes({
+      limit: 5,
+      showTags: false,
+    }),
+    condition: (page) => page.fileData.slug !== "index",
+  }),
+    Component.ConditionalRender({
       component: Component.Comments({
         provider: "giscus",
         options: {
